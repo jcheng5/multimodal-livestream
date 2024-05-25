@@ -4,6 +4,7 @@
 
 import os
 from pathlib import Path
+from typing import Any
 
 import dotenv
 from openai import OpenAI
@@ -24,7 +25,7 @@ client = OpenAI()
 # This is the input video that we'll turn into the user prompt.
 
 
-def chat(video_file: str, messages: list[object], progress: ui.Progress) -> str:
+def chat(video_file: str, messages: list[Any], progress: ui.Progress) -> str:
 
     # At the time of this writing, the GPT-4o API doesn't directly support video or audio input. Instead, we'll decode the video into frames and feed them to the model as images, and decode the audio into text and feed it to the model as text.
 
@@ -79,7 +80,7 @@ def chat(video_file: str, messages: list[object], progress: ui.Progress) -> str:
     audio = client.audio.speech.create(
         model="tts-1",
         voice="nova",
-        input=response_text,
+        input=response_text or "",
         response_format="mp3",
     )
     response_audio_uri = datauri.from_bytes(audio.read(), "audio/mpeg")
