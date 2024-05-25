@@ -7,7 +7,7 @@ import ffmpeg
 import datauri
 
 
-def decode_input(video_uri_or_file: str, fps: int = 2) -> tuple[str, list[str]]:
+def split_video(video_uri_or_file: str, fps: int = 2) -> tuple[str, list[str]]:
     if shutil.which("ffmpeg") is None:
         raise FileNotFoundError("ffmpeg not found in PATH")
 
