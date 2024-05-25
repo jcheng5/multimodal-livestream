@@ -1,0 +1,5 @@
+jupyter
+ffmpeg-python
+openai
+python-dotenv
+
