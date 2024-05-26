@@ -26,4 +26,32 @@ pip install -r requirements.txt
 
 ## Usage
 
+### Notebook
+
+The simplest and most primitive way to run the demo is to use the Jupyter notebook.
+
 Replace the `input.mov` file with your own recording (or don't) and run the Jupyter notebook called `video-to-speech.ipynb`.
+
+### Running the interactive app
+
+There's also an interactive [Shiny](https://shiny.posit.co/py/) app that you can run with the following command:
+
+```
+shiny run app.py --port 0 --launch-browser
+```
+
+Or see a live version at [https://jcheng5.shinyapps.io/multimodal/](https://jcheng5.shinyapps.io/multimodal/).
+
+### Running the bake-off app
+
+Finally, there's a version of the app that you can use to compare GPT-4o with GPT-4 and an open source model called LLaVA:7B. To run it, you'll need to install [ollama](https://ollama.com) and then:
+
+```
+ollama pull llava:7b
+```
+
+Then run the bake-off app with:
+
+```
+shiny run app_bakeoff.py --port 0 --launch-browser
+```
