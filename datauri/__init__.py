@@ -46,8 +46,9 @@ def as_tempfile(data_uri: str) -> Generator[str, None, None]:
         suffix=mimetypes.guess_extension(mime_type), delete=False
     ) as file:
         file.write(bytes)
+        file.flush()
+        file.close()
         try:
             yield file.name
         finally:
-            file.close()
             os.unlink(file.name)
